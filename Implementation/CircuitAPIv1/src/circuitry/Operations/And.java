@@ -10,6 +10,7 @@ package circuitry.Operations;
  * @author 20204909
  */
 public class And extends BinaryOperation{
+    // return value
       @Override
     public boolean getValue() {
         return lhs.getValue()&& rhs.getValue();

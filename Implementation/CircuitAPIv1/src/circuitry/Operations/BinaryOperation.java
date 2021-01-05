@@ -13,6 +13,7 @@ public abstract class BinaryOperation extends Formula{
     protected Formula rhs;
     protected Formula lhs;
 
+    // Set the value of left hand side and right hand side
     public void setValue(Formula lf, Formula rf) {
         lhs = lf;
         rhs = rf;

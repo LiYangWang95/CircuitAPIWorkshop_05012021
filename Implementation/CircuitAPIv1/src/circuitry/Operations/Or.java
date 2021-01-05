@@ -11,6 +11,7 @@ package circuitry.Operations;
  */
 public class Or extends BinaryOperation{
 
+    // return the value
     @Override
     public boolean getValue() {
         return lhs.getValue()|| rhs.getValue();

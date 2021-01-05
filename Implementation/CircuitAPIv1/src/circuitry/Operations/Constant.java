@@ -12,18 +12,15 @@ import circuitry.Operations.Formula;
  * @author 20204909
  */
 public class Constant extends Formula{
-    private String name;
     private boolean value;
 
+    // return the value
     @Override
     public boolean getValue() {
         return value;
     }
 
-    public String getName() {
-        return name;
-    }
-
+    // set the value
     public void setValue(boolean value) {
         this.value = value;
     }

@@ -2,22 +2,31 @@ package circuitry;
 import circuitry.Operations.*;
 
 public class FormulaFactory {
-    public Formula getFormula(FormulaType type){
-        if(type == FormulaType.Circuit){
-            return new Circuit();
-        }
-        if(type == FormulaType.Constant){
-            return new Constant();
-        }
-        if(type == FormulaType.And){
-            return new And();
-        }
-        if(type == FormulaType.Or){
-            return new Or();
-        }
-        if(type == FormulaType.Not){
-            return new Negation();
-        }
-        return null;
+    // Return new Constant
+    public Constant getConstant(Boolean f){
+        Constant con = new Constant();
+        con.setValue(f);
+        return con;
+    }
+
+    // Return new And
+    public And getAnd(Formula lhs, Formula rhs){
+        And and = new And();
+        and.setValue(lhs, rhs);
+        return and;
+    }
+
+    // Return new Or
+    public Or getOr(Formula lhs, Formula rhs){
+        Or or = new Or();
+        or.setValue(lhs, rhs);
+        return or;
+    }
+
+    // Return new Negation
+    public Negation getNot(Formula f){
+        Negation not = new Negation();
+        not.setValue(f);
+        return not;
     }
 }

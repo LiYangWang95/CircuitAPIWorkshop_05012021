@@ -11,6 +11,7 @@ package circuitry.Operations;
  */
 public class Negation extends UnaryOperation{
 
+    // return the value
     @Override
     public boolean getValue() {
         return !uniVal.getValue();
