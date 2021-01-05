@@ -13,17 +13,20 @@ import circuitry.Operations.Formula;
  */
 public class Circuit extends Formula{
     private boolean value;
-    private Formula formula;
+//    private Formula formula;
 
     @Override
     public boolean getValue() {
        return value;
     }
-    
-    private void calculateCircuit(Formula f){
-        formula=f;
-        value = formula.getValue();
-                 
+
+    public void setValue(Formula f){
+        value = f.getValue();
     }
+    
+//    private void calculateCircuit(Formula f){
+//        formula=f;
+//        value = formula.getValue();
+//    }
     
 }

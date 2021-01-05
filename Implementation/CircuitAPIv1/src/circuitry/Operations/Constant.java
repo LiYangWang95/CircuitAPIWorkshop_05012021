@@ -24,11 +24,6 @@ public class Constant extends Formula{
         return name;
     }
 
-    public Constant(String name, boolean value) {
-        this.name = name;
-        this.value = value;
-    }
-
     public void setValue(boolean value) {
         this.value = value;
     }

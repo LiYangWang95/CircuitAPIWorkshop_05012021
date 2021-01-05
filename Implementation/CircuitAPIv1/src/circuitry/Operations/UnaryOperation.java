@@ -13,5 +13,9 @@ import circuitry.Operations.Formula;
  */
 public abstract class UnaryOperation extends Formula {
     protected Formula uniVal;
+
+    public void setUniVal(Formula f){
+        uniVal = f;
+    }
     
 }

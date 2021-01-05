@@ -12,7 +12,10 @@ package circuitry.Operations;
 public abstract class BinaryOperation extends Formula{
     protected Formula rhs;
     protected Formula lhs;
-    
-    
+
+    public void setValue(Formula lf, Formula rf) {
+        lhs = lf;
+        rhs = rf;
+    }
     
 }

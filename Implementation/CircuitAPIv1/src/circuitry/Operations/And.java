@@ -14,5 +14,6 @@ public class And extends BinaryOperation{
     public boolean getValue() {
         return lhs.getValue()&& rhs.getValue();
     }
-    
+
+
 }

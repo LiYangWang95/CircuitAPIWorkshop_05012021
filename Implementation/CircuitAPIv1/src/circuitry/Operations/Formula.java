@@ -5,13 +5,14 @@
  */
 package circuitry.Operations;
 
+import java.text.Normalizer;
+
 /**
  *
  * @author 20204909
  */
 public abstract class Formula {
     public abstract boolean getValue();
-    
-    
+
     
 }

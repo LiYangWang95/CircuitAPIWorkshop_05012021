@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="CircuitAPIv1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/CircuitAPIv1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
