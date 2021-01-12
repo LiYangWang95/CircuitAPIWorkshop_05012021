@@ -272,6 +272,28 @@ public class CircuitJUnitTest {
         assertTrue(actualMessage.contains(expectedMessage));
     }
 
+    @Test
+    public void testFormula8() throws Exception {
+        and1 = factory.getAnd(cons1, cons2);
+        not1 = factory.getNot(cons1);
+        or1 = factory.getOr(and1, not1);
+
+        try {
+            cons1.setDValue(0.0);
+        }catch (Exception e){
+            actualMessage = e.getMessage();
+        }
+
+        try {
+            cons2.setDValue(-1.0);
+        }catch (Exception e){
+            actualMessage = e.getMessage();
+        }
+
+        expectedMessage = "out of bounds";
+        assertTrue(actualMessage.contains(expectedMessage));
+    }
+
     // Gte
     @Test
     public void testGte1() throws Exception {
@@ -307,7 +329,7 @@ public class CircuitJUnitTest {
     }
 
     @Test
-    public void testFormula8() throws Exception {
+    public void testFormula9() throws Exception {
         // ((x1 and x2) or (not x1)) gte (x3 or x2)
         and1.setValue(cons1, cons2);
         not1.setValue(cons1);
@@ -320,5 +342,49 @@ public class CircuitJUnitTest {
         cons3.setDValue(1.0);
 
         assertTrue(gte1.getDValue() == 0.0);
+    }
+
+    @Test
+    public void testFormula10() throws Exception {
+        // x1 and x2 -> x1 = true , x2 = 1.0
+        Constant consx = factory.getConstant(true);
+        Constant consy = factory.getConstant(0.0);
+        And andz = factory.getAnd(consx, consy);
+
+        consx.setValue(true);
+        consy.setDValue(0.5);
+
+        andz.getDValue();
+        andz.getValue();
+
+        assertFalse(andz.getValue());
+        assertTrue(andz.getDValue() == 0.5);
+    }
+
+    // Test constant
+    @Test
+    public void testConstant2() throws Exception {
+        Constant consy = factory.getConstant(0.0);
+        consy.setDValue(0.5);
+
+        assertTrue(consy.getDValue() == 0.5);
+
+    }
+
+    @Test
+    public void testFormula11() throws Exception {
+        // x1 or x2 -> x1 = true , x2 = 0.5
+        Constant consx = factory.getConstant(true);
+        Constant consy = factory.getConstant(0.0);
+        Or orz = factory.getOr(consx, consy);
+
+        consx.setValue(true);
+        consy.setDValue(0.5);
+
+        orz.getDValue();
+        orz.getValue();
+
+        assertTrue(orz.getValue());
+        assertTrue(orz.getDValue() == 1.0);
     }
 }

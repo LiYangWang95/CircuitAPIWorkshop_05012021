@@ -29,11 +29,22 @@ public class Constant extends Formula{
     // set the value
     public void setValue(boolean value) {
         this.value = value;
+        if (this.value){
+            dValue = 1.0;
+        }else{
+            dValue = 0.0;
+        }
     }
 
     public void setDValue(double dval) throws Exception {
         if (dval >= 0.0 && dval <= 1.0){
             dValue = dval;
+            if (dValue == 1.0){
+                value = true;
+            }
+            else{
+                value = false;
+            }
         }
         else{
             throw new Exception("out of bounds: " + dval);
