@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="ooad-api:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/ooad_api_jar</output-path>
-    <root id="archive" name="ooad-api.jar">
-      <element id="module-output" name="ooad-api" />
-    </root>
-  </artifact>
-</component>
