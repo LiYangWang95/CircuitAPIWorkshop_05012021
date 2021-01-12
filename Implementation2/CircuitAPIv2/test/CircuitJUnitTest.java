@@ -23,10 +23,11 @@ import static org.junit.Assert.*;
 public class CircuitJUnitTest {
     private Constant cons1, cons2, cons3, cons4;
     private And and1, and2;
-    private Or or1;
+    private Or or1, or2;
     private Negation not1;
+    private Gte gte1;
     private FormulaFactory factory;
-    private String expectedMessage;
+    private String expectedMessage, actualMessage;
     
     public CircuitJUnitTest() {
     }
@@ -47,9 +48,11 @@ public class CircuitJUnitTest {
         cons2 = factory.getConstant(true);
         cons3 = factory.getConstant(true);
         cons4 = factory.getConstant(true);
+        gte1 = factory.getGte(cons1, cons2);
         not1 = factory.getNot(cons3);
         and1 = factory.getAnd(cons1, cons2);
         or1 = factory.getOr(and1, not1);
+        or2 = factory.getOr(and1, not1);
         and2 = factory.getAnd(and1, or1);
 
         expectedMessage = "out of bounds";
@@ -247,19 +250,75 @@ public class CircuitJUnitTest {
         assertTrue(or1.getDValue() == 0.625);
     }
 
-    @Test(expected = Exception.class)
+    @Test
     public void testFormula7() throws Exception {
         and1 = factory.getAnd(cons1, cons2);
         not1 = factory.getNot(cons1);
         or1 = factory.getOr(and1, not1);
 
+        try {
+            cons1.setDValue(0.0);
+        }catch (Exception e){
+            actualMessage = e.getMessage();
+        }
+
+        try {
+            cons2.setDValue(2.0);
+        }catch (Exception e){
+            actualMessage = e.getMessage();
+        }
+
+        expectedMessage = "out of bounds";
+        assertTrue(actualMessage.contains(expectedMessage));
+    }
+
+    // Gte
+    @Test
+    public void testGte1() throws Exception {
+        // x1 gte x2
+        gte1.setValue(cons1, cons2);
+
+        cons1.setDValue(1.0);
+        cons2.setDValue(1.0);
+
+        assertTrue(gte1.getDValue() == 1.0);
+    }
+
+    @Test
+    public void testGte2() throws Exception {
+        // x1 gte x2
+        gte1.setValue(cons1, cons2);
+
         cons1.setDValue(0.0);
-        cons2.setDValue(2.0);
+        cons2.setDValue(1.0);
 
+        assertTrue(gte1.getDValue() == 0.0);
+    }
 
-//        String actualMessage = expected.getMessage;
-//
-//
-//        assertTrue(actualMessage.contains(expectedMessage));
+    @Test
+    public void testGte3() throws Exception {
+        // x1 gte x2
+        gte1.setValue(cons1, cons2);
+
+        cons1.setDValue(1.0);
+        cons2.setDValue(0.0);
+
+        assertTrue(gte1.getDValue() == 1.0);
+    }
+
+    @Test
+    public void testFormula8() throws Exception {
+        // ((x1 and x2) or (not x1)) gte (x3 or x2)
+        and1.setValue(cons1, cons2);
+        not1.setValue(cons1);
+        or1.setValue(cons3, cons2);
+        or2.setValue(and1, not1);
+        gte1.setValue(or2, or1);
+
+        cons1.setDValue(1.0);
+        cons2.setDValue(0.0);
+        cons3.setDValue(1.0);
+
+        assertTrue(gte1.getDValue() == 0.0);
     }
 }

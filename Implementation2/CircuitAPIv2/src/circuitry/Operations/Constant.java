@@ -36,27 +36,8 @@ public class Constant extends Formula{
             dValue = dval;
         }
         else{
-            throw new Exception("out of bounds");
+            throw new Exception("out of bounds: " + dval);
         }
 
     }
-
-//    public void setDValue(double dval) {
-//        try {
-//            check(dval);
-//            dValue = dval;
-//        }
-//        catch (Exception e){
-//            System.out.println(e.getMessage());
-//        }
-//
-//    }
-//
-//    private void check(double dval) throws Exception{
-//        if (dval < 0.0 || dval > 1.0){
-//            throw new Exception("out of bounds");
-//        }
-//    }
-    
-    
 }

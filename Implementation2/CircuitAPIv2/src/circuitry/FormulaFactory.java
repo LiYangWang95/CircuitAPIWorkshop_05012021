@@ -1,5 +1,6 @@
 package circuitry;
 import circuitry.Operations.*;
+import com.sun.org.apache.xpath.internal.operations.Gt;
 
 public class FormulaFactory {
     // Return new Constant
@@ -33,5 +34,12 @@ public class FormulaFactory {
         Negation not = new Negation();
         not.setValue(f);
         return not;
+    }
+
+    // Return new Gte
+    public Gte getGte(Formula lhs, Formula rhs){
+        Gte gte = new Gte();
+        gte.setValue(lhs, rhs);
+        return gte;
     }
 }
