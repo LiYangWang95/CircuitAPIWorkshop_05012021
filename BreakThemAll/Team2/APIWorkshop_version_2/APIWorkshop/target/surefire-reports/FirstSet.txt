@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: FirstSet
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.009 sec <<< FAILURE!
+FirstSet.testX1andX2()  Time elapsed: 0.005 sec  <<< FAILURE!
+java.lang.IllegalStateException: The value of variable X1 has not been set!
+	at edu.tue.apiworkshop.logic.Variable.evaluate(Variable.java:25)
+	at edu.tue.apiworkshop.logic.And.evaluate(And.java:11)
+	at edu.tue.apiworkshop.circuitapi.Circuit.evaluateDouble(Circuit.java:43)
+	at edu.tue.apiworkshop.circuitapi.Circuit.evaluate(Circuit.java:33)
+	at FirstSet.testX1andX2(FirstSet.java:32)
+
