@@ -136,6 +136,20 @@ public class FirstSet {
 
     @Test
     public void testToBreak3(){
+        Or or = new Or(f1, f2);
+
+        assertTrue(or.evaluate());
+    }
+
+    @Test
+    public void testToBreak4(){
+        Not not = new Not(f1);
+
+        assertFalse(not.evaluate());
+    }
+
+    @Test
+    public void testToBreak5(){
         Binary bin = new Binary(f1, f2) {
             @Override
             public Boolean evaluate() {
@@ -148,7 +162,20 @@ public class FirstSet {
     }
 
     @Test
-    public void testToBreak4(){
+    public void testToBreak6(){
+        Unary uni = new Unary(f1) {
+            @Override
+            public Boolean evaluate() {
+                return true;
+            }
+        };
+
+        uni.setValue("x", true);
+        assertTrue(uni.evaluate());
+    }
+
+    @Test
+    public void testToBreak7(){
         Variable v = new Variable("v");
 
         v.setValue("v", true);

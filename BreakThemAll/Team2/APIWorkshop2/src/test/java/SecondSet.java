@@ -6,10 +6,7 @@
 
 import edu.tue.apiworkshop.circuitapi.Circuit;
 import edu.tue.apiworkshop.circuitapi.CircuitContsructor;
-import edu.tue.apiworkshop.logic.And;
-import edu.tue.apiworkshop.logic.Binary;
-import edu.tue.apiworkshop.logic.Formula;
-import edu.tue.apiworkshop.logic.Variable;
+import edu.tue.apiworkshop.logic.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -188,6 +185,20 @@ public class SecondSet {
 
     @Test
     public void testToBreak3(){
+        Or or = new Or(f1, f2);
+
+        assertTrue(or.evaluate());
+    }
+
+    @Test
+    public void testToBreak4() {
+        Not not = new Not(f1);
+
+        assertFalse(not.evaluate());
+    }
+
+    @Test
+    public void testToBreak5(){
         Binary bin = new Binary(f1, f2) {
             @Override
             public Double evaluate() {
@@ -200,7 +211,20 @@ public class SecondSet {
     }
 
     @Test
-    public void testToBreak4(){
+    public void testToBreak6(){
+        Unary uni = new Unary(f1) {
+            @Override
+            public Double evaluate() {
+                return 1.0;
+            }
+        };
+
+        uni.setValue("x", true);
+        assertTrue(uni.evaluate());
+    }
+
+    @Test
+    public void testToBreak7(){
         Variable v = new Variable("v");
 
         v.setValue("v", true);
