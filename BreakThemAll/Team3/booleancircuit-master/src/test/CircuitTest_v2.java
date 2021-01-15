@@ -99,18 +99,17 @@ class CircuitTest_v2 {
     }
 
     // To break
-    @Test
-    @org.junit.Test
-    public void toBreak1(){
-        DualInput d = new DualInput() {
-            @Override
-            public void setInput(Component lhs, Component rhs) {
-
-            }
-        };
-
-        assertFalse(d.getValue());
-    }
+//    @Test
+//    public void toBreak1(){
+//        DualInput d = new DualInput() {
+//            @Override
+//            public void setInput(Component lhs, Component rhs) {
+//
+//            }
+//        };
+//
+//        assertFalse(d.getValue());
+//    }
 
     @Test
     public void toBreak2(){

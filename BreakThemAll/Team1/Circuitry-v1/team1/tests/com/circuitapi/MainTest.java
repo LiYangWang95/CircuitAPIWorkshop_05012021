@@ -151,7 +151,7 @@ public class MainTest extends TestCase {
 
             }
         };
-        assertTrue(x1.getValue());
+        assertFalse(x1.getValue());
     }
 
 }

@@ -19,9 +19,10 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author 20204913
  */
 public class FirstSet {
-    LogicFormula f1, f2;
+    static LogicFormula f1;
+    static LogicFormula f2;
     @BeforeAll
-    public void setUp(){
+    public static void setUp(){
         f1 = new LogicFormula() {
             @Override
             public Boolean evaluate() {
@@ -150,7 +151,7 @@ public class FirstSet {
     public void testToBreak4(){
         Variable v = new Variable("v");
 
-        v.setValue("x", true);
+        v.setValue("v", true);
         assertTrue(v.evaluate());
     }
 }

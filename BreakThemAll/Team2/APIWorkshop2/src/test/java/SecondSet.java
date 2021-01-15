@@ -19,9 +19,9 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author 20204913
  */
 public class SecondSet {
-    Formula f1, f2;
+    static Formula f1, f2;
     @BeforeAll
-    public void setUp(){
+    public static void setUp(){
         f1 = new Formula() {
             @Override
             public Double evaluate() {
@@ -165,19 +165,19 @@ public class SecondSet {
     }
 
     // To break
-//    @Test
-//    public void testToBreak1(){
-//        LogicFormula f = new LogicFormula() {
-//            @Override
-//            public Boolean evaluate() {
-//                return true;
-//            }
-//        };
-//
-//        Not not = new Not(f);
-//
-//        assertFalse(not.evaluate());
-//    }
+    @Test
+    public void testToBreak1(){
+        LogicFormula f = new LogicFormula() {
+            @Override
+            public Boolean evaluate() {
+                return true;
+            }
+        };
+
+        Not not = new Not(f);
+
+        assertFalse(not.evaluate());
+    }
 
     @Test
     public void testToBreak2(){
@@ -203,7 +203,7 @@ public class SecondSet {
     public void testToBreak4(){
         Variable v = new Variable("v");
 
-        v.setValue("x", true);
+        v.setValue("v", true);
         assertTrue(v.evaluate());
     }
 }
